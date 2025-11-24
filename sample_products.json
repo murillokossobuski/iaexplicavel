@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Óculos de Sol Premium UV400",
+    "price": 199.90,
+    "url": "https://www.zerezes.com.br/produto/premium-uv400"
+  },
+  {
+    "name": "Óculos de Grau Titanium Light",
+    "price": 299.90,
+    "url": "https://www.zerezes.com.br/produto/titanium-light"
+  },
+  {
+    "name": "Óculos de Sol Básico",
+    "price": 49.90,
+    "url": "https://www.zerezes.com.br/produto/basico"
+  },
+  {
+    "name": "Óculos de Leitura +1.50",
+    "price": 35.90,
+    "url": "https://www.zerezes.com.br/produto/leitura-150"
+  }
+]
