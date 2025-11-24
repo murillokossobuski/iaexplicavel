@@ -2,9 +2,10 @@
 """
 Script to find the cheapest glasses from Zerezes
 
-This script can work in two modes:
+This script can work in three modes:
 1. Web scraping mode (requires internet access to zerezes.com.br)
 2. Manual data mode (using a JSON file with product data)
+3. Demo mode (using sample data for testing)
 
 Usage:
     python3 find_cheapest_glasses.py                    # Try web scraping
@@ -78,9 +79,24 @@ def parse_products(html_content: str) -> List[Dict]:
                 link_elem = element.find('a')
                 
                 if name_elem and price_elem:
-                    # Clean up price (remove R$, spaces, convert comma to dot)
+                    # Clean up price - handle Brazilian number format (e.g., R$ 1.234,56)
                     price_text = price_elem.get_text().strip()
-                    price_text = price_text.replace('R$', '').replace('.', '').replace(',', '.').strip()
+                    # Remove currency symbol and spaces
+                    price_text = price_text.replace('R$', '').strip()
+                    
+                    # Handle Brazilian format: thousands separator is dot, decimal is comma
+                    # Remove thousand separators (dots) but keep the last part after comma
+                    if ',' in price_text:
+                        # Split by comma to separate integer and decimal parts
+                        parts = price_text.split(',')
+                        if len(parts) == 2:
+                            # Remove dots from integer part, keep decimal part
+                            integer_part = parts[0].replace('.', '')
+                            decimal_part = parts[1]
+                            price_text = f"{integer_part}.{decimal_part}"
+                    else:
+                        # No comma, just remove dots (in case it's a format like 1234.00)
+                        price_text = price_text.replace('.', '')
                     
                     try:
                         price = float(price_text)

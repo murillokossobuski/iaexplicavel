@@ -50,13 +50,13 @@ python3 find_cheapest_glasses.py
 ### Requisitos
 
 - Python 3.x
-- requests (já incluído)
-- beautifulsoup4 (opcional, para web scraping)
+- requests (instale com `pip install requests`)
+- beautifulsoup4 (opcional, para web scraping - instale com `pip install beautifulsoup4`)
 
-### Instalação de dependências opcionais
+### Instalação de dependências
 
-Para habilitar o web scraping:
+Para habilitar todas as funcionalidades:
 ```bash
-pip install beautifulsoup4
+pip install requests beautifulsoup4
 ```
 
